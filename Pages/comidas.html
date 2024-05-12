@@ -49,12 +49,12 @@
     <div class="container">
         <h1 class="mt-5">Categorías de Comidas</h1>
         <div id="categorias" class="row mt-3"></div>
-        <button id="enviar" class="btn btn-primary mt-3">Traer datos</button>
+  
     </div>
 
     <script>
         $(document).ready(function(){
-            $("#enviar").click(function(){
+      
                 $.get("https://www.themealdb.com/api/json/v1/1/categories.php", function(data){
                     console.log(data); // Imprimir el objeto de la API en la consola
                     $.each(data.categories, function(i, item){
@@ -65,15 +65,16 @@
                                     '<div class="card-body">' +
                                         '<h5 class="card-title">'+ item.strCategory +'</h5>' +
                                         '<p class="card-text">'+ item.strCategoryDescription +'</p>' +
-                                        '<a href="#" class="btn btn-primary">Ver Detalles</a>' +
+                                        '<a href="#" class="btn btn-primary"> Pedir </a>' +
                                     '</div>' +
                                 '</div>' +
                             '</div>'
                         ); 
                     });
                 });
-            });
+           
         });
     </script>
+   
 </body>
 </html>
