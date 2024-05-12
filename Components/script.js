@@ -132,7 +132,7 @@ $(document).ready(function() {
 });
 
 //Abrir modal 
-$(document).ready(function() {
-  $('#myModal').modal('show');
-});
+  $(document).ready(function() {
+    $('#myModal').modal('show');
+  });
 
