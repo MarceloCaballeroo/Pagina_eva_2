@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Estilos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="../Layout/style.css" rel="stylesheet">
+        <!--jQuery Bootstrap-->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+        <!-- Script personalizado -->
+        <script src="../Components/script.js"></script>
+</head>
+<body>
+    <div id="navbar-placeholder">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="../Components/images/logo.png" width="30" height="30" alt="Chino">
+                Nini Rest
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Comidas">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Market.html">Sucursales</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="actionLogin" style="display:none;">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="actionLogout" style="display:none;">Cerrar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="actionRegister">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>        
+    </div>
+    <div class="container">
+        <h1 class="mt-5">Categorías de Comidas</h1>
+        <div id="categorias" class="row mt-3"></div>
+  
+    </div>
+
+    <script>
+        $(document).ready(function(){
+      
+                $.get("https://www.themealdb.com/api/json/v1/1/categories.php", function(data){
+                    console.log(data); // Imprimir el objeto de la API en la consola
+                    $.each(data.categories, function(i, item){
+                        $("#categorias").append(
+                            '<div class="col-md-4 mb-4">' +
+                                '<div class="card">' +
+                                    '<img src="'+ item.strCategoryThumb +'" class="card-img-top" alt="...">' +
+                                    '<div class="card-body">' +
+                                        '<h5 class="card-title">'+ item.strCategory +'</h5>' +
+                                        '<p class="card-text">'+ item.strCategoryDescription +'</p>' +
+                                        '<a href="#" class="btn btn-primary"> Pedir </a>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>'
+                        ); 
+                    });
+                });
+           
+        });
+    </script>
+   
+</body>
+</html>
