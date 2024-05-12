@@ -130,3 +130,9 @@ $(document).ready(function() {
     // Puedes agregar aquí el código para enviar el formulario mediante AJAX, por ejemplo
   });
 });
+
+//Abrir modal 
+$(document).ready(function() {
+  $('#myModal').modal('show');
+});
+
