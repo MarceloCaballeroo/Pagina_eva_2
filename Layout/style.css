@@ -11,19 +11,10 @@ body {
 .navbar {
   position: sticky;
   top: 0;
+  width: 100%;
   z-index: 1000;
-  background-color: #A3220F; /* Rojo más intenso para mejor visibilidad */
 }
 
-.navbar-brand, .nav-link {
-  color: #FFFF00; /* Amarillo más brillante para mejor contraste */
-}
-
-/* Mejoras de accesibilidad para enlaces */
-.nav-link:hover, .nav-link:focus {
-  color: #FFFFFF; /* Blanco para destacar sobre rojo */
-  text-decoration: none; /* Remover subrayado */
-}
 
 /* Estilos del Carrousel */
 .carousel-inner img {
