@@ -3,5 +3,60 @@ body {
                 linear-gradient(to bottom, #613834 1px, transparent 1px);
     background-color: #FFEFD0;
     background-size: 6rem 4rem;
+    font-family: Arial, sans-serif;
 }
-  
+
+
+/* Barra de Navegación */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #A3220F; /* Rojo más intenso para mejor visibilidad */
+}
+
+.navbar-brand, .nav-link {
+  color: #FFFF00; /* Amarillo más brillante para mejor contraste */
+}
+
+/* Mejoras de accesibilidad para enlaces */
+.nav-link:hover, .nav-link:focus {
+  color: #FFFFFF; /* Blanco para destacar sobre rojo */
+  text-decoration: none; /* Remover subrayado */
+}
+
+/* Estilos del Carrousel */
+.carousel-inner img {
+  width: 100%;
+  height: auto; /* Imágenes responsivas */
+}
+
+/* Mejoras en el texto del carrousel */
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para mejorar legibilidad */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Estilos para el footer */
+footer {
+  background-color: #A3220F; /* Rojo oscuro más opaco para consistencia */
+  color: white; /* Texto en blanco para contraste */
+  padding: 20px 0;
+}
+
+footer a {
+  color: #FFFF00; /* Mantener amarillo para enlaces */
+}
+
+footer a:hover {
+  color: #FFFFFF; /* Blanco al pasar el ratón */
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+  .navbar-nav {
+      text-align: center; /* Centrar enlaces en dispositivos móviles */
+  }
+}
+

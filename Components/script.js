@@ -86,25 +86,21 @@ $(document).ready(function () {
   }
 });
 
-// Función para obtener una comida aleatoria
-function getRandomMeal() {
-    fetch('https://www.themealdb.com/api/json/v1/1/random.php')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        // Aquí puedes procesar los datos recibidos
-    })
-    .catch(error => console.error('Error:', error));
-}
 
-// Función para obtener comidas por nombre
-function getMealsByName(name) {
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        // Aquí puedes procesar los datos recibidos
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('../Components/navbar.html')
+    .then(response => response.text())
+    .then(html => {
+        document.getElementById('navbar-placeholder').innerHTML = html;
     })
-    .catch(error => console.error('Error:', error));
-}
+    .catch(error => console.warn(error));
+
+    fetch('../Components/footer.html')
+    .then(response => response.text())
+    .then(html => {
+        document.getElementById('footer-placeholder').innerHTML = html;
+    })
+    .catch(error => console.warn(error));
+});
+
 
