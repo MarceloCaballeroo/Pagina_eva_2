@@ -11,37 +11,56 @@ body {
 
 
 /* Barra de Navegación */
-.custom-navbar {
-  background-color: #7D1917;
-  height: 100px; /* Ajusta este valor según tus necesidades */
+
+.navbar {
+  background-color:  #7D1917;
 }
 
+.nav-link {
+  color: white !important;
+  font-size: 18px;
+}
+
+.nav-link:hover {
+  color: #998955 !important;
+}
 .navbar-logo {
-  width: 150px; /* Asegúrate de que el logo no sea más grande que la altura de la navbar */
-  height: 150px; 
+  width: 130px;
+  height: auto;
 }
 
-.custom-navbar .navbar-nav .nav-link {
-  color: white !important; 
-  transition: color 0.3s ease; 
+@media (min-width: 992px) {
+  .custom-nav {
+    transform: translateX(-50px);
+  }
 }
 
-.custom-navbar .nav-link:hover {
-  color: #998955 !important; 
+.footer-logo {
+  width: 250px;
+  margin-bottom: 20px;
 }
 
-.custom-navbar .navbar-brand {
-  color: white !important; 
-  font-size: 25px;
+.page-footer {
+  color: white;
+  background-color: #7D1917;
 }
 
-.custom-navbar .nav-link {
-  font-size: 20px;
+.footer-link {
+  color: white;
+  text-decoration: none;
 }
 
-.navbar-brand {
-  position: absolute;
-  transform: translateX(300%); /* Ajusta este valor según tus necesidades */
+.footer-link:hover {
+  color: #998955;
+}
+
+@media (max-width: 768px) {
+  .navbar-logo, .footer-logo {
+      width: 80px; /* Tamaño reducido para dispositivos móviles */
+  }
+  .navbar-nav .nav-link {
+      padding: 0.5rem 1rem; /* Aumenta el área de toque */
+  }
 }
 
 /* Estilos del Carrousel */
@@ -57,40 +76,6 @@ body {
 }
 
 /* Estilos para el footer */
-.page-footer {
-  background-color: #7D1917; /* Color de fondo oscuro */
-  color: white; /* Texto en color blanco para contraste */
-}
-
-.footer-link, footer a {
-  color: #FFFF00; /* Enlaces en amarillo */
-  text-decoration: none; /* Sin subrayado */
-}
-
-.footer-link:hover, footer a:hover {
-  color: #FFFFFF; /* Blanco al pasar el mouse */
-}
-
-.footer-logo {
-  width: 400px; /* Tamaño del logo ajustado */
-  margin-bottom: 10px; /* Espacio bajo el logo */
-}
-
-.flex-center {
-  display: flex;
-  justify-content: center; /* Centrado de íconos sociales */
-}
-
-.fa-facebook-f, .fa-twitter, .fa-instagram {
-  color: #fff; /* Iconos en blanco */
-  margin-right: 15px; /* Espaciado adecuado entre iconos */
-}
-
-@media (max-width: 768px) {
-  .flex-center {
-      justify-content: center;
-  }
-}
 
 /* Estilos para la sección de servicios */
 .icon-container {
