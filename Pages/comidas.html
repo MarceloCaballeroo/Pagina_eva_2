@@ -20,52 +20,42 @@
 </head>
 
 <body>
-    <div id="navbar-placeholder">
-        <nav class="navbar navbar-expand-lg navbar-danger" style="background-color: rgba(255, 0, 0, 0.6);">
-            <a class="navbar-brand" href="index.html" style="color: rgba(255, 255, 0, 1);">
-                <img src="../Components/images/logo.png" width="30" height="30" alt="Chino">
-                Nini Rest
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Comidas.html" style="color: rgba(255, 255, 0, 1);">Menu</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Surcursal.html" style="color: rgba(255, 255, 0, 1);">Sucursales</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Reservacion.html" style="color: rgba(255, 255, 0, 1);">Reservacion</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="actionLogin"
-                            style="color: rgba(255, 255, 0, 1); display:none;">Iniciar sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="actionLogout"
-                            style="color: rgba(255, 255, 0, 1); display:none;">Cerrar sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="actionRegister"
-                            style="color: rgba(255, 255, 0, 1);">Registrarse</a>
-                    </li>
-                </ul>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="../Components/icons/icono.svg" alt="Logo" class="navbar-logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto custom-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Comidas.html">Menú</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Surcursal.html">Sucursales</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Reservacion.html">Reservación</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Promociones.html">Promoción</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
-
+        
     </div>
+    
     <div class="container">
         <h1 class="mt-5">Categorías de Comidas</h1>
         <div id="categorias" class="row mt-3"></div>
     </div>
 
-    <div id="footer-placeholder"></div>
+    
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -78,27 +68,41 @@
 
     <script>
         $(document).ready(function () {
-
+    
+            // Función para manejar el clic en el botón "Ver más"
+            $(document).on('click', '.btn-ver-mas', function () {
+                // Encontrar la descripción dentro del contenedor de la tarjeta
+                var descripcion = $(this).closest('.card').find('.descripcion-categoria');
+                // Alternar la visibilidad de la descripción
+                descripcion.toggle();
+            });
+    
+            // Petición GET a la API para obtener las categorías de comida
             $.get("https://www.themealdb.com/api/json/v1/1/categories.php", function (data) {
-                console.log(data); // Imprimir el objeto de la API en la consola
+                // Iterar sobre las categorías obtenidas
                 $.each(data.categories, function (i, item) {
+                    // Agregar una nueva tarjeta por cada categoría
                     $("#categorias").append(
                         '<div class="col-md-4 mb-4">' +
                         '<div class="card">' +
                         '<img src="' + item.strCategoryThumb + '" class="card-img-top" alt="...">' +
                         '<div class="card-body">' +
                         '<h5 class="card-title">' + item.strCategory + '</h5>' +
-                        '<p class="card-text">' + item.strCategoryDescription + '</p>' +
-                        '<a href="#" class="btn btn-primary"> Pedir </a>' +
+                        '<div class="descripcion-categoria" style="display:none;">' + item.strCategoryDescription + '</div>' + '<br>'+// Agregar la descripción oculta
+                        '<a href="#" class="btn btn-primary btn-ver-mas">Ver más</a>' + 
                         '</div>' +
                         '</div>' +
                         '</div>'
                     );
                 });
             });
-
+    
         });
     </script>
+    
+
+    <!-- footer -->
+    <div id="footer-placeholder"></div>
 
 </body>
 
