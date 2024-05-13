@@ -39,6 +39,11 @@ body {
   font-size: 20px;
 }
 
+.navbar-brand {
+  position: absolute;
+  transform: translateX(300%); /* Ajusta este valor según tus necesidades */
+}
+
 /* Estilos del Carrousel */
 .carousel-inner img {
   width: 30%;
@@ -52,24 +57,38 @@ body {
 }
 
 /* Estilos para el footer */
-footer {
-  background-color: #7D1917; 
-  color: white; 
-  padding: 20px 0;
+.page-footer {
+  background-color: #7D1917; /* Color de fondo oscuro */
+  color: white; /* Texto en color blanco para contraste */
 }
 
-footer a {
-  color: #FFFF00; 
+.footer-link, footer a {
+  color: #FFFF00; /* Enlaces en amarillo */
+  text-decoration: none; /* Sin subrayado */
 }
 
-footer a:hover {
-  color: #FFFFFF; 
+.footer-link:hover, footer a:hover {
+  color: #FFFFFF; /* Blanco al pasar el mouse */
 }
 
-/* Estilos Responsivos */
+.footer-logo {
+  width: 400px; /* Tamaño del logo ajustado */
+  margin-bottom: 10px; /* Espacio bajo el logo */
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center; /* Centrado de íconos sociales */
+}
+
+.fa-facebook-f, .fa-twitter, .fa-instagram {
+  color: #fff; /* Iconos en blanco */
+  margin-right: 15px; /* Espaciado adecuado entre iconos */
+}
+
 @media (max-width: 768px) {
-  .navbar-nav {
-      text-align: center;
+  .flex-center {
+      justify-content: center;
   }
 }
 
@@ -81,7 +100,7 @@ footer a:hover {
 
 .icon {
   height: 100px;
-  margin-bottom: 20px; /* Reducido de 100px a 20px */
+  margin-bottom: 20px;
 }
 
 h3 {
