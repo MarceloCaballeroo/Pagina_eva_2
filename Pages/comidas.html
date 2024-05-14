@@ -139,7 +139,8 @@
             });
     
             // Función para manejar el clic en el botón "Ver más"
-            $(document).on('click', '.btn-ver-mas', function () {
+            $(document).on('click', '.btn-ver-mas', function (e) {
+                e.preventDefault(); // Evitar que la página se desplace al inicio
                 // Encontrar la descripción dentro del contenedor de la tarjeta
                 var descripcion = $(this).closest('.card').find('.descripcion-categoria');
                 // Alternar la visibilidad de la descripción
