@@ -136,3 +136,36 @@ p {
   font-size: 1em;
   border-radius: 5px; /* Ajusta según tus necesidades */
 }
+
+.form-container {
+  background-color: burlywood; /* Fondo blanco */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.form-group label {
+  color: #8b5e3c; /* Texto marrón rojizo */
+}
+
+.form-control {
+  border-color: #8b5e3c; /* Borde marrón rojizo */
+}
+
+.btn-primary {
+  background-color: #8b5e3c; /* Fondo marrón rojizo */
+  border-color: #8b5e3c; /* Borde marrón rojizo */
+}
+
+.btn-primary:hover {
+  background-color: #714529; /* Fondo marrón oscuro al pasar el ratón * /
+  border-color: #714529; /* Borde marrón oscuro al pasar el ratón */
+}
+
+.form-control::placeholder {
+  color: #8b5e3c; /* Color del placeholder marrón rojizo */
+}
+
+.card-title{
+  color: #8b5e3c;
+}
