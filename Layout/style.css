@@ -1,4 +1,3 @@
-
 /* Estilos Generales */
 body {
   background: radial-gradient(#e5e7eb 1px, transparent 1px);
@@ -7,13 +6,22 @@ body {
   font-family: Arial, sans-serif;
 }
 
+h3 {
+  font-size: 18px;
+  margin-top: 10px;
+}
 
+p {
+  font-size: 14px;
+}
 
+.border-right {
+  border-right: 1px solid #000 !important; /* Asegura que este estilo tenga prioridad */
+}
 
 /* Barra de Navegación */
-
 .navbar {
-  background-color:  #7D1917;
+  background-color: #7D1917;
 }
 
 .nav-link {
@@ -24,6 +32,7 @@ body {
 .nav-link:hover {
   color: #998955 !important;
 }
+
 .navbar-logo {
   width: 130px;
   height: auto;
@@ -35,6 +44,17 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .navbar-logo {
+    width: 80px; /* Tamaño reducido para dispositivos móviles */
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.5rem 1rem; /* Aumenta el área de toque */
+  }
+}
+
+/* Footer */
 .footer-logo {
   width: 250px;
   margin-bottom: 20px;
@@ -55,15 +75,12 @@ body {
 }
 
 @media (max-width: 768px) {
-  .navbar-logo, .footer-logo {
-      width: 80px; /* Tamaño reducido para dispositivos móviles */
-  }
-  .navbar-nav .nav-link {
-      padding: 0.5rem 1rem; /* Aumenta el área de toque */
+  .footer-logo {
+    width: 80px; /* Tamaño reducido para dispositivos móviles */
   }
 }
 
-/* Estilos del Carrousel */
+/* Carrousel */
 .carousel-inner img {
   width: 30%;
   height: 100%; 
@@ -75,9 +92,7 @@ body {
   border-radius: 5px;
 }
 
-/* Estilos para el footer */
-
-/* Estilos para la sección de servicios */
+/* Sección de Servicios */
 .icon-container {
   padding: 5px;
   display: inline-block;
@@ -88,20 +103,7 @@ body {
   margin-bottom: 20px;
 }
 
-h3 {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-p {
-  font-size: 14px;
-}
-
-.border-right {
-  border-right: 1px solid #000 !important; /* Asegura que este estilo tenga prioridad */
-}
-
-/* Estilos para la sección de contacto */
+/* Sección de Contacto */
 .hero-section {
   position: relative;
   width: 100%;
@@ -117,7 +119,7 @@ p {
 .hero-text {
   text-align: center;
   color: white;
-  text-shadow: 0px 4px 6px rgba(0,0,0,0.8); /* Sombra para mejorar la legibilidad */
+  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.8); /* Sombra para mejorar la legibilidad */
 }
 
 .hero-text h1 {
@@ -137,6 +139,7 @@ p {
   border-radius: 5px; /* Ajusta según tus necesidades */
 }
 
+/* Formulario de Reservación */
 .form-container {
   background-color: burlywood; /* Fondo blanco */
   padding: 20px;
@@ -158,7 +161,7 @@ p {
 }
 
 .btn-primary:hover {
-  background-color: #714529; /* Fondo marrón oscuro al pasar el ratón * /
+  background-color: #714529; /* Fondo marrón oscuro al pasar el ratón */
   border-color: #714529; /* Borde marrón oscuro al pasar el ratón */
 }
 
@@ -166,15 +169,14 @@ p {
   color: #8b5e3c; /* Color del placeholder marrón rojizo */
 }
 
-.card-title{
+.card-title {
   color: #8b5e3c;
 }
 
+/* Otros Estilos */
 .borde-negro {
   color: rgb(235, 210, 175);
   -webkit-text-stroke-width: 1.2px; /* Anchura del borde */
   -webkit-text-stroke-color: black; /* Color del borde */
   font-weight: bold;
 }
-
-
