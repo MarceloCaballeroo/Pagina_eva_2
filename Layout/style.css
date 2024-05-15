@@ -169,3 +169,10 @@ p {
 .card-title{
   color: #8b5e3c;
 }
+
+.borde-negro {
+  color: rgb(235, 210, 175);
+  -webkit-text-stroke-width: 1.2px; /* Anchura del borde */
+  -webkit-text-stroke-color: black; /* Color del borde */
+  font-weight: bold;
+}

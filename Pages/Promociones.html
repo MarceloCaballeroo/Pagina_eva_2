@@ -14,29 +14,135 @@
 <body>
     <!-- Barra de navegación -->
     <div id="navbar-placeholder"></div>
+    <br>
+    <div class="container">
+        <h4>¡Aprovecha nuestras promociones especiales por tiempo limitado! </h4>
 
-    <div class="card border-0 shadow-sm animate__animated animate__fadeIn" style="background-color: #F8F9FA;">
-        <img src="https://via.placeholder.com/350x150" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Promoción Especial</h5>
-            <p class="card-text">¡Aprovecha nuestras promociones especiales por tiempo limitado! Descuentos en una amplia selección de productos.</p>
-            <a href="#" class="btn btn-primary">Ver detalles</a>
+    </div>
+    <br>
+
+    <!-- Contenedor para la tarjeta de promoción especial -->
+    <div id="promocion" class="card bg-dark text-white">
+        <div class="row">
+            <!-- Imagen 1 -->
+            <div class="col-md-4">
+                <img src="" class="card-img" alt="">
+            </div>
+            <!-- Imagen 2 -->
+            <div class="col-md-4">
+                <img src="" class="card-img" alt="">
+            </div>
+            <!-- Imagen 3 -->
+            <div class="col-md-4">
+                <img src="" class="card-img" alt="">
+            </div>
+        </div>
+        <div class="card-img-overlay bg-brown">
+            <h1  class="card-title borde-negro">🏮 Promoción Ninnin Especial 🏮</h1>
+            <br>
+            <h2 class="card-text borde-negro">  Desert + Ninnin Picante + Vegan por 20.000 CLP</h2>
+            <h2 class="card-text borde-negro">  💸 CON UN 50% DE DESCUENTO 💸</h2>
         </div>
     </div>
-    
 
-
-    
-    
+    <!-- Tres tarjetas pequeñas con imágenes aleatorias -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Tarjeta 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card" style="background-color:#FCD1A0 ;">
+                    <img src="" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">🍽️ ¡Disfruta con nosotros! 🍽️</h5>
+                        <p class="card-text"> Plato de la semana por 5.000 🐉 </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card" style="background-color:#FCD1A0 ;">
+                    <img src="" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">🥗 ¡Tu día con energía! 🥗</h5>
+                        <p class="card-text">Oferta 2X1 🤑 </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card"  style="background-color:#FCD1A0 ;">
+                    <img src="" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">✨ ¡Saborea la experiencia! ✨</h5>
+                        <p class="card-text">Compras superiones a 15.000 gana un Ninnin🥡</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+          
     <!-- footer -->
     <div id="footer-placeholder"></div>
-
+    
     <!-- jQuery y Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
         crossorigin="anonymous"></script>
+        
     <!-- Script personalizado -->
     <script src="../Components/script.js"></script>
+
+    <script>
+        // Cargar imágenes aleatorias de comida desde la API de TheMealDB
+        function cargarImagenesAleatorias() {
+            // Realizar una solicitud para obtener una comida aleatoria
+            $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
+                var meal = data.meals[0];
+                if (meal) {
+                    // Asignar la URL de la imagen de la comida a cada una de las imágenes en la tarjeta
+                    $("#promocion .card-img").eq(0).attr("src", meal.strMealThumb);
+                } else {
+                    // Si no se puede obtener una comida, mostrar un mensaje de error
+                    $("#promocion .card-text").html("Error al cargar la comida.");
+                }
+            });
+
+            // Repetir el proceso para las otras dos imágenes
+            $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
+                var meal = data.meals[0];
+                if (meal) {
+                    $("#promocion .card-img").eq(1).attr("src", meal.strMealThumb);
+                } else {
+                    $("#promocion .card-text").html("Error al cargar la comida.");
+                }
+            });
+
+            $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
+                var meal = data.meals[0];
+                if (meal) {
+                    $("#promocion .card-img").eq(2).attr("src", meal.strMealThumb);
+                } else {
+                    $("#promocion .card-text").html("Error al cargar la comida.");
+                }
+            });
+
+            // Cargar imágenes aleatorias para las tarjetas pequeñas
+            $(".card").each(function(index) {
+                var tarjeta = $(this);
+                $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
+                    var meal = data.meals[0];
+                    if (meal) {
+                        tarjeta.find(".card-img-top").attr("src", meal.strMealThumb);       
+                    } else {
+                        tarjeta.find(".card-text").html("Error al cargar la comida.");
+                    }
+                });
+            });
+        }
+
+        // Llamar a la función para cargar las imágenes aleatorias
+        cargarImagenesAleatorias();
+    </script>
 </body>
 </html>
