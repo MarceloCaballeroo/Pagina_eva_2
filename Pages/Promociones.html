@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ninnin</title>
     <!-- Estilos CSS de Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -89,57 +89,5 @@
         
     <!-- Script personalizado -->
     <script src="../Components/script.js"></script>
-
-    <script>
-        // Cargar imágenes aleatorias de comida desde la API de TheMealDB
-        function cargarImagenesAleatorias() {
-            // Realizar una solicitud para obtener una comida aleatoria
-            $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
-                var meal = data.meals[0];
-                if (meal) {
-                    // Asignar la URL de la imagen de la comida a cada una de las imágenes en la tarjeta
-                    $("#promocion .card-img").eq(0).attr("src", meal.strMealThumb);
-                } else {
-                    // Si no se puede obtener una comida, mostrar un mensaje de error
-                    $("#promocion .card-text").html("Error al cargar la comida.");
-                }
-            });
-
-            // Repetir el proceso para las otras dos imágenes
-            $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
-                var meal = data.meals[0];
-                if (meal) {
-                    $("#promocion .card-img").eq(1).attr("src", meal.strMealThumb);
-                } else {
-                    $("#promocion .card-text").html("Error al cargar la comida.");
-                }
-            });
-
-            $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
-                var meal = data.meals[0];
-                if (meal) {
-                    $("#promocion .card-img").eq(2).attr("src", meal.strMealThumb);
-                } else {
-                    $("#promocion .card-text").html("Error al cargar la comida.");
-                }
-            });
-
-            // Cargar imágenes aleatorias para las tarjetas pequeñas
-            $(".card").each(function(index) {
-                var tarjeta = $(this);
-                $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
-                    var meal = data.meals[0];
-                    if (meal) {
-                        tarjeta.find(".card-img-top").attr("src", meal.strMealThumb);       
-                    } else {
-                        tarjeta.find(".card-text").html("Error al cargar la comida.");
-                    }
-                });
-            });
-        }
-
-        // Llamar a la función para cargar las imágenes aleatorias
-        cargarImagenesAleatorias();
-    </script>
 </body>
 </html>

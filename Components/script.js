@@ -136,3 +136,134 @@ $(document).ready(function() {
     $('#myModal').modal('show');
   });
 
+
+  function cargarImagenesAleatorias() {
+    // Realizar una solicitud para obtener una comida aleatoria
+    $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
+        var meal = data.meals[0];
+        if (meal) {
+            // Asignar la URL de la imagen de la comida a cada una de las imágenes en la tarjeta
+            $("#promocion .card-img").eq(0).attr("src", meal.strMealThumb);
+        } else {
+            // Si no se puede obtener una comida, mostrar un mensaje de error
+            $("#promocion .card-text").html("Error al cargar la comida.");
+        }
+    });
+
+    // Repetir el proceso para las otras dos imágenes
+    $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
+        var meal = data.meals[0];
+        if (meal) {
+            $("#promocion .card-img").eq(1).attr("src", meal.strMealThumb);
+        } else {
+            $("#promocion .card-text").html("Error al cargar la comida.");
+        }
+    });
+
+    $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
+        var meal = data.meals[0];
+        if (meal) {
+            $("#promocion .card-img").eq(2).attr("src", meal.strMealThumb);
+        } else {
+            $("#promocion .card-text").html("Error al cargar la comida.");
+        }
+    });
+
+    // Cargar imágenes aleatorias para las tarjetas pequeñas
+    $(".card").each(function(index) {
+        var tarjeta = $(this);
+        $.get("https://www.themealdb.com/api/json/v1/1/random.php", function(data) {
+            var meal = data.meals[0];
+            if (meal) {
+                tarjeta.find(".card-img-top").attr("src", meal.strMealThumb);       
+            } else {
+                tarjeta.find(".card-text").html("Error al cargar la comida.");
+            }
+        });
+    });
+}
+
+// Llamar a la función para cargar las imágenes aleatorias
+cargarImagenesAleatorias();
+
+
+$(document).ready(function () {
+  var currentPage = 1;
+  var categoriesPerPage = 5; // Número de categorías por página
+  var categories = []; // Array para almacenar las categorías
+
+  // Función para mostrar categorías según la página actual
+  function showCategories(page) {
+      // Ocultar todas las categorías
+      $('.categoria').hide();
+      // Mostrar las categorías de la página actual
+      for (var i = (page - 1) * categoriesPerPage; i < page * categoriesPerPage; i++) {
+          $('.categoria').eq(i).show();
+      }
+  }
+
+  // Manejar clic en los enlaces de paginación
+  $('.pagination a').on('click', function (e) {
+      e.preventDefault();
+      var page = parseInt($(this).attr('data-page'));
+      if (!isNaN(page)) {
+          currentPage = page;
+          showCategories(currentPage);
+      }
+  });
+
+  // Mostrar categorías al inicio
+  showCategories(currentPage);
+
+  // Manejar clic en el botón "Previous"
+  $('#previousPage').on('click', function () {
+      if (currentPage > 1) {
+          currentPage--;
+          showCategories(currentPage);
+      }
+  });
+
+  // Manejar clic en el botón "Next"
+  $('#nextPage').on('click', function () {
+      if (currentPage < $('.page-item').length - 2) {
+          currentPage++;
+          showCategories(currentPage);
+      }
+  });
+
+  // Petición GET a la API para obtener las categorías de comida
+  $.get("https://www.themealdb.com/api/json/v1/1/categories.php", function (data) {
+      // Almacenar las categorías en el array
+      categories = data.categories;
+
+      // Iterar sobre las categorías obtenidas
+      $.each(categories, function (i, item) {
+          // Agregar una nueva tarjeta por cada categoría
+          $("#categorias").append(
+              '<div class="col-md-5 mb-4 categoria" style="display:none;">' +
+              '<div class="card" style="background-color:#FCD1A0 ;">' +
+              '<img src="' + item.strCategoryThumb + '" class="card-img-top" alt="...">' +
+              '<div class="card-body">' +
+              '<h5 class="card-title">' + item.strCategory + '</h5>' +
+              '<div class="descripcion-categoria" style="display:none;">' + item.strCategoryDescription + '</div>' +
+              '<br>' +
+              '<a href="#" class="btn btn-primary btn-ver-mas" style="background-color:#E74C3C ;">Ver más</a>' +
+              '</div>' +
+              '</div>' +
+              '</div>'
+          );
+      });
+
+      // Mostrar las primeras categorías al cargar la página
+      showCategories(currentPage);
+  });
+
+  // Función para manejar el clic en el botón "Ver más"
+  $(document).on('click', '.btn-ver-mas', function (e) {
+      e.preventDefault(); // Evitar que la página se desplace al inicio
+      // Encontrar la descripción dentro del contenedor de la tarjeta
+      var descripcion = $(this).closest('.card').find('.descripcion-categoria');
+      // Alternar la visibilidad de la descripción
+      descripcion.toggle();
+  });
+});
