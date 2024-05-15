@@ -32,16 +32,48 @@ $(document).ready(function () {
     var date = $('#date').val();
     var time = $('#time').val();
 
-    if (name.trim() === '' || email.trim() === '' || number.trim() === '' || phone.trim() === '' || date.trim() === '' || time.trim() === '') {
-        alert('Por favor, completa todos los campos.');
-        return false;
-    }
+    // Validar el nombre para que contenga solo letras
+  var nameRegex = /^[a-zA-Z\s]+$/;
+  if (!nameRegex.test(name)) {
+      alert('Por favor, introduce un nombre válido (solo letras).');
+      return false;
+  }
 
+  // Validar el formato del teléfono (+569XXXXXXXX)
+  var phoneRegex = /^\+569\d{8}$/;
+  if (!phoneRegex.test(phone)) {
+      alert('Por favor, introduce un número de teléfono válido (+569XXXXXXXX).');
+      return false;
+  }
+
+  // Validar que la fecha no sea anterior a la actual
+  var today = new Date();
+  var selectedDate = new Date(date);
+  if (selectedDate < today) {
+      alert('Por favor, selecciona una fecha futura.');
+      return false;
+  }
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert('Por favor, introduce un correo electrónico válido.');
         return false;
     }
+
+     // Validar que la hora esté entre 12 y 19 horas (de mediodía a las 7 PM)
+    var selectedTime = new Date('1970-01-01T' + time + ':00');
+    var startTime = new Date('1970-01-01T12:00:00');
+    var endTime = new Date('1970-01-01T19:00:00');
+    if (selectedTime < startTime || selectedTime > endTime) {
+        alert('Por favor, selecciona una hora entre las 12:00 PM y las 7:00 PM.');
+        return false;
+    }
+
+    
+    if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || date.trim() === '' || time.trim() === '') {
+        alert('Por favor, completa todos los campos.');
+        return false;
+    }
+
 
     alert('Formulario enviado con éxito.');
   });
@@ -165,3 +197,4 @@ $(document).ready(function () {
     descripcion.toggle();
   });
 });
+
