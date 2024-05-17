@@ -27,7 +27,6 @@ $(document).ready(function () {
     event.preventDefault();
     var name = $('#name').val();
     var email = $('#email').val();
-    var number = $('#number').val();
     var phone = $('#phone').val();
     var date = $('#date').val();
     var time = $('#time').val();
@@ -141,7 +140,7 @@ $(document).ready(function () {
 
   // Manejar clic en los enlaces de paginación
   $('.pagination a').on('click', function (e) {
-    e.preventDefault();
+    e.preventDefault();  
     var page = parseInt($(this).attr('data-page'));
     if (!isNaN(page)) {
       currentPage = page;
